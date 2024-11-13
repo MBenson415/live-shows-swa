@@ -40,6 +40,28 @@
           "role": "anonymous"
         }
       ]
+    },
+    "Venues": {
+      "source": "dbo.VENUE",
+      "permissions": [
+        {
+          "actions": [
+            "*"
+          ],
+          "role": "anonymous"
+        }
+      ]
+    },
+    "Events": {
+      "source": "dbo.EVENTS",
+      "permissions": [
+        {
+          "actions": [
+            "*"
+          ],
+          "role": "anonymous"
+        }
+      ]
     }
   }
 }
