@@ -29,5 +29,17 @@
       "mode": "production"
     }
   },
-  "entities": {}
+  "entities": {
+    "Bands": {
+      "source": "dbo.BANDS",
+      "permissions": [
+        {
+          "actions": [
+            "*"
+          ],
+          "role": "admin"
+        }
+      ]
+    }
+  }
 }
