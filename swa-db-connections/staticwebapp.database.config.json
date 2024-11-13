@@ -37,7 +37,7 @@
           "actions": [
             "*"
           ],
-          "role": "admin"
+          "role": "anonymous"
         }
       ]
     }
