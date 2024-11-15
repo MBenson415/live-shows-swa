@@ -29,3 +29,18 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Useful VS Code Extensions
+
+Azure Static Web Apps: ms-azuretools.vscode-azurestaticwebapps
+
+SQL Server (msssql): ms-mssql.mssql
+
+Vue - Official: Vue.volar
+
+Azure Resources: ms-azuretools.vscode-azureresourcegroups
+
+
+### CLI tools
+
+npm install -g @azure/static-web-apps-cli
