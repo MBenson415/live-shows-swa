@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .sidebar {
-  width: 200px;
+  width: min(20%, 200px);
   background: #f0f0f0;
   padding: 1rem;
   height: 100vh;
