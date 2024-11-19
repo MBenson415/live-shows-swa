@@ -1,0 +1,64 @@
+.page1-container {
+  display: flex;
+}
+
+.page1-main-content {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.page1-form {
+  margin-bottom: 2rem;
+}
+
+.page1-form-group {
+  margin-bottom: 1rem;
+}
+
+.page1-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.page1-button:hover {
+  background-color: #0056b3;
+}
+
+.page1-bands-list {
+  list-style: none;
+  padding: 0;
+}
+
+.page1-band-item {
+  margin-bottom: 1.5rem;
+}
+
+.page1-events-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 1rem;
+}
+
+.page1-event-item {
+  margin-bottom: 0.5rem;
+}
+
+.page1-delete-button {
+  margin-left: 1rem;
+  padding: 0.25rem 0.5rem;
+  color: red;
+  background: none;
+  border: 1px solid red;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.page1-delete-button:hover {
+  background-color: red;
+  color: white;
+}
