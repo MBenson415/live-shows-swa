@@ -64,6 +64,8 @@ import axios from "axios";
 import Sidebar from "@/components/Sidebar.vue";
 import "./Page1.css";
 
+const baseURL = "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api/rest"; // Declare baseURL here
+
 export default {
   components: {
     Sidebar,
@@ -89,8 +91,12 @@ export default {
   methods: {
     async fetchBandsAndEvents() {
       try {
-        const bandsResponse = await axios.get("/rest/Bands");
-        const eventsResponse = await axios.get("/rest/Events");
+        const bandsResponse = await axios.get(`${baseURL}/Bands`); // Use baseURL for Bands endpoint
+        const eventsResponse = await axios.get(`${baseURL}/Events`); // Use baseURL for Events endpoint
+
+        console.log('Bands Response:', bandsResponse.data); // Inspect the data structure
+        console.log('Events Response:', eventsResponse.data); // Inspect the data structure
+
 
         // Map events to their respective bands
         const bands = bandsResponse.data.items;
@@ -105,7 +111,7 @@ export default {
     },
     async handleBandSubmit() {
       try {
-        const response = await axios.post("/rest/Bands", this.newBand);
+        const response = await axios.post(`${baseURL}/Bands`, this.newBand); // Use baseURL for Band post
         this.bands.push({ ...response.data, events: [] }); // Add empty events array
         this.resetBandForm();
       } catch (error) {
@@ -118,7 +124,7 @@ export default {
     },
     async handleEventSubmit() {
       try {
-        const response = await axios.post("/rest/Events", this.newEvent);
+        const response = await axios.post(`${baseURL}/Events`, this.newEvent); // Use baseURL for Event post
         const band = this.bands.find((b) => b.id === this.newEvent.bandId);
         band.events.push(response.data); // Add the event to the selected band
         this.resetEventForm();
@@ -133,7 +139,7 @@ export default {
     },
     async deleteEvent(eventId) {
       try {
-        await axios.delete(`/rest/Events/${eventId}`);
+        await axios.delete(`${baseURL}/Events/${eventId}`); // Use baseURL for Event delete
         this.bands.forEach((band) => {
           band.events = band.events.filter((event) => event.id !== eventId);
         });
