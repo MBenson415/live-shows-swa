@@ -81,7 +81,7 @@ export default {
     async fetchData() {
       try {
         // Fetch data from the database
-        const baseURL = "/data-api/rest";
+        const baseURL = "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/rest";
 
 
         const [bandsResponse, venuesResponse, eventsResponse] = await Promise.all([
