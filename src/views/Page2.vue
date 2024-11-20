@@ -81,8 +81,7 @@ export default {
     async fetchData() {
       try {
         // Fetch data from the database
-        const baseURL = "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/rest";
-
+        const baseURL = "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api/rest";
 
         const [bandsResponse, venuesResponse, eventsResponse] = await Promise.all([
           axios.get(`${baseURL}/Bands`),
@@ -91,9 +90,9 @@ export default {
         ]);
 
         // Assign data to variables
-        this.bands = bandsResponse.data.items || [];
-        this.venues = venuesResponse.data.items || [];
-        this.events = eventsResponse.data.items || [];
+        this.bands = bandsResponse.data.value || [];
+        this.venues = venuesResponse.data.value || [];
+        this.events = eventsResponse.data.value || [];
       } catch (error) {
         console.error("Error fetching data:", error);
       }
