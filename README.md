@@ -30,7 +30,7 @@ npm run lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Useful VS Code Extensions
+# Useful VS Code Extensions
 
 Azure Static Web Apps: ms-azuretools.vscode-azurestaticwebapps
 
@@ -41,13 +41,13 @@ Vue - Official: Vue.volar
 Azure Resources: ms-azuretools.vscode-azureresourcegroups
 
 
-### CLI tools
+# CLI tools
 
 npm install -g @azure/static-web-apps-cli
 
 brew install az
 
-### Dev environment
+# Dev environment
 
 See https://learn.microsoft.com/en-us/azure/static-web-apps/local-development#how-it-works
 
