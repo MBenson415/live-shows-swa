@@ -30,7 +30,7 @@ npm run lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Useful VS Code Extensions
+# Useful VS Code Extensions
 
 Azure Static Web Apps: ms-azuretools.vscode-azurestaticwebapps
 
@@ -41,6 +41,20 @@ Vue - Official: Vue.volar
 Azure Resources: ms-azuretools.vscode-azureresourcegroups
 
 
-### CLI tools
+# CLI tools
 
 npm install -g @azure/static-web-apps-cli
+
+brew install az
+
+# Dev environment
+
+See https://learn.microsoft.com/en-us/azure/static-web-apps/local-development#how-it-works
+
+Log in to Azure CLI with az login
+
+Log in to swa CLI with swa login
+
+type swa start to spin up local development server. 
+
+Visit http://localhost:4280/data-api/rest/Bands to see API response
