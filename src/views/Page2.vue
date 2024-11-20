@@ -64,6 +64,7 @@
 
 <script>
 import axios from "axios";
+import FetchData from "../functions/FetchData";
 
 export default {
   name: "Page2",
@@ -88,6 +89,12 @@ export default {
           axios.get(`${baseURL}/Venues`),
           axios.get(`${baseURL}/Events`),
         ]);
+
+        const bands = await FetchData('bands');
+        const venues = await FetchData('venues');
+        const events = await FetchData('events');
+
+        console.log( bands, venues, events);
 
         // Assign data to variables
         this.bands = bandsResponse.data.value || [];
