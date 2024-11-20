@@ -10,14 +10,12 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>Genre</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="band in bands" :key="band.id">
           <td>{{ band.id }}</td>
           <td>{{ band.name }}</td>
-          <td>{{ band.genre }}</td>
         </tr>
       </tbody>
     </table>
@@ -83,10 +81,13 @@ export default {
     async fetchData() {
       try {
         // Fetch data from the database
+        const baseURL = "/data-api/rest";
+
+
         const [bandsResponse, venuesResponse, eventsResponse] = await Promise.all([
-          axios.get("/rest/Bands"),
-          axios.get("/rest/Venues"),
-          axios.get("/rest/Events"),
+          axios.get(`${baseURL}/Bands`),
+          axios.get(`${baseURL}/Venues`),
+          axios.get(`${baseURL}/Events`),
         ]);
 
         // Assign data to variables
