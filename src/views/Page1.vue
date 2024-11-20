@@ -91,31 +91,29 @@ export default {
   methods: {
     async fetchBandsAndEvents() {
       try {
-        const bandsResponse = await axios.get(`${baseURL}/Bands`); // Use baseURL for Bands endpoint
-        const eventsResponse = await axios.get(`${baseURL}/Events`); // Use baseURL for Events endpoint
-
-        console.log('Bands Response:', bandsResponse.data); // Inspect the data structure
-        console.log('Events Response:', eventsResponse.data); // Inspect the data structure
+        const baseURL = "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api";
+        const bandsResponse = await axios.get(`${baseURL}/rest/Bands`);
+        const eventsResponse = await axios.get(`${baseURL}/rest/Events`);
 
 
+        console.log(bandsResponse);
+        console.log(eventsResponse.body);
         // Map events to their respective bands
-        const bands = bandsResponse.data.items;
-        const events = eventsResponse.data.items;
+        const bands = bandsResponse.data.value.map((band) => ({
+          id: band.ID, // Correcting the field name
+          name: band.NAME, // Correcting the field name
+          events: [],
+        }));
+
+        const events = eventsResponse.data.value;
+
         bands.forEach((band) => {
           band.events = events.filter((event) => event.bandId === band.id);
         });
+
         this.bands = bands;
       } catch (error) {
         console.error("Error fetching data:", error);
-      }
-    },
-    async handleBandSubmit() {
-      try {
-        const response = await axios.post(`${baseURL}/Bands`, this.newBand); // Use baseURL for Band post
-        this.bands.push({ ...response.data, events: [] }); // Add empty events array
-        this.resetBandForm();
-      } catch (error) {
-        console.error("Error adding band:", error);
       }
     },
     resetBandForm() {
