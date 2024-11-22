@@ -58,3 +58,15 @@ Log in to swa CLI with swa login
 type swa start to spin up local development server. 
 
 Visit http://localhost:4280/data-api/rest/Bands to see API response
+
+
+```bash
+npm run serve
+```
+Development server will start, App running at:
+  - Local:   http://localhost:8080/
+  - Network: http://192.168.1.73:8080/
+
+Visit http://localhost:8080/data-api/rest/Bands to see API response
+
+Make sure baseURL is set correctly before running the server. This can be changed within FetchData.js. Soon, this will change automatically based on environment (development server vs production)
