@@ -9,13 +9,47 @@
         <h2>Add Band</h2>
         <div class="page1-form-group">
           <label for="band-name">Band Name:</label>
-          <input v-model="newBand.name" id="band-name" type="text" required />
-        </div>
-        <div class="page1-form-group">
-          <label for="genre">Genre:</label>
-          <input v-model="newBand.genre" id="genre" type="text" required />
+          <input v-model="newBand.NAME" id="band-name" type="text" required />
         </div>
         <button class="page1-button" type="submit">Add Band</button>
+      </form>
+
+      <!-- Add Venue Form -->
+      <form @submit.prevent="handleVenueSubmit" class="page1-form">
+        <h2>Add Venue</h2>
+        <div class="page1-form-group">
+          <label for="venue-name">Venue Name:</label>
+          <input v-model="newVenue.NAME" id="venue-name" type="text" required />
+        </div>
+        <div class="page1-form-group">
+          <label for="street1">Street (Number and Name):</label>
+          <input v-model="newVenue.STREET1" id="street1" type="text" required />
+        </div>
+        <div class="page1-form-group">
+          <label for="street2">City:</label>
+          <input v-model="newVenue.STREET2" id="street2" type="text" required />
+        </div>
+        <div class="page1-form-group">
+          <label for="state">State (2 Characters):</label>
+          <input
+            v-model="newVenue.STATE"
+            id="state"
+            type="text"
+            maxlength="2"
+            required
+          />
+        </div>
+        <div class="page1-form-group">
+          <label for="zip">ZIP (5 Digits):</label>
+          <input
+            v-model="newVenue.ZIP"
+            id="zip"
+            type="number"
+            maxlength="5"
+            required
+          />
+        </div>
+        <button class="page1-button" type="submit">Add Venue</button>
       </form>
 
       <!-- Add Event Form -->
@@ -44,7 +78,7 @@
       <h2>Existing Bands and Events</h2>
       <ul class="page1-bands-list">
         <li v-for="band in bands" :key="band.id" class="page1-band-item">
-          <strong>{{ band.name }} ({{ band.genre }})</strong>
+          <strong>{{ band.name }}</strong>
           <ul class="page1-events-list">
             <li v-for="event in band.events" :key="event.id" class="page1-event-item">
               Event Date: {{ event.date }} | Location: {{ event.location }}
@@ -79,8 +113,14 @@ export default {
   data() {
     return {
       newBand: {
-        name: "",
-        genre: "",
+        NAME: "",
+      },
+      newVenue: {
+        NAME: "",
+        STREET1: "",
+        STREET2: "",
+        STATE: "",
+        ZIP: "",
       },
       newEvent: {
         bandId: null,
@@ -97,21 +137,11 @@ export default {
     async fetchBandsAndEvents() {
       try {
         const bandsResponse = await FetchData('Bands');
-
-        const venuesResponse = await axios.get(`${baseURL}/rest/Venues`);
-
-
-
         const eventsResponse = await axios.get(`${baseURL}/rest/Events`);
 
-
-        console.log(bandsResponse);
-        console.log(venuesResponse.data.value);
-        // Map events to their respective bands
-        
         const bands = bandsResponse.map((band) => ({
-          id: band.ID, // Correcting the field name
-          name: band.NAME, // Correcting the field name
+          id: band.ID,
+          name: band.NAME,
           events: [],
         }));
 
@@ -128,13 +158,42 @@ export default {
     },
     resetBandForm() {
       this.newBand.name = "";
-      this.newBand.genre = "";
+    },
+    resetVenueForm() {
+      this.newVenue = {
+        NAME: "",
+        STREET1: "",
+        STREET2: "",
+        STATE: "",
+        ZIP: "",
+      };
+    },
+    async handleBandSubmit() {
+      try {
+        console.log("Submitting band:", this.newBand);
+        await axios.post(`${baseURL}/rest/Bands`, this.newBand);
+        this.fetchBandsAndEvents();
+        this.resetBandForm();
+        console.log("Success!");
+      } catch (error) {
+        console.error("Error adding band:", error);
+      }
+    },
+    async handleVenueSubmit() {
+      try {
+        console.log("Submitting venue:", this.newVenue); // Debugging log
+        await axios.post(`${baseURL}/rest/Venues`, this.newVenue);
+        this.resetVenueForm();
+        console.log("Success!");
+      } catch (error) {
+        console.error("Error adding venue:", error.response?.data || error.message);
+      }
     },
     async handleEventSubmit() {
       try {
-        const response = await axios.post(`${baseURL}/Events`, this.newEvent); // Use baseURL for Event post
+        const response = await axios.post(`${baseURL}/Events`, this.newEvent);
         const band = this.bands.find((b) => b.id === this.newEvent.bandId);
-        band.events.push(response.data); // Add the event to the selected band
+        band.events.push(response.data);
         this.resetEventForm();
       } catch (error) {
         console.error("Error adding event:", error);
@@ -147,7 +206,7 @@ export default {
     },
     async deleteEvent(eventId) {
       try {
-        await axios.delete(`${baseURL}/Events/${eventId}`); // Use baseURL for Event delete
+        await axios.delete(`${baseURL}/Events/${eventId}`);
         this.bands.forEach((band) => {
           band.events = band.events.filter((event) => event.id !== eventId);
         });
