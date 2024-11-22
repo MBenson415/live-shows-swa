@@ -66,8 +66,10 @@ import "./Page1.css";
 
 import FetchData from "../functions/FetchData";
 
-//const baseURL = "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api/rest"; // Declare baseURL here
-const baseURL = "http://localhost:8080/data-api";
+// Conditionally set the baseURL for the database
+const baseURL = window.location.hostname === "localhost"
+  ? "http://localhost:8080/data-api"
+  : "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api";
 
 export default {
   components: {

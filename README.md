@@ -43,9 +43,13 @@ Azure Resources: ms-azuretools.vscode-azureresourcegroups
 
 # CLI tools
 
+```bash
 npm install -g @azure/static-web-apps-cli
+```
 
+```bash
 brew install az
+```
 
 # Dev environment
 
@@ -53,9 +57,21 @@ See https://learn.microsoft.com/en-us/azure/static-web-apps/local-development#ho
 
 Log in to Azure CLI with az login
 
+```bash
+az login
+```
+
 Log in to swa CLI with swa login
 
-type swa start to spin up local development server. 
+```bash
+swa login
+```
+
+Type swa start to spin up local development server. 
+
+```bash
+swa start
+```
 
 Visit http://localhost:4280/data-api/rest/Bands to see API response
 
