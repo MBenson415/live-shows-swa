@@ -13,9 +13,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="band in bands" :key="band.id">
-          <td>{{ band.id }}</td>
-          <td>{{ band.name }}</td>
+        <tr v-for="band in bands" :key="band.ID">
+          <td>{{ band.ID }}</td>
+          <td>{{ band.NAME }}</td>
         </tr>
       </tbody>
     </table>
@@ -31,10 +31,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="venue in venues" :key="venue.id">
-          <td>{{ venue.id }}</td>
-          <td>{{ venue.name }}</td>
-          <td>{{ venue.location }}</td>
+        <tr v-for="venue in venues" :key="venue.ID">
+          <td>{{ venue.ID }}</td>
+          <td>{{ venue.NAME }}</td>
+          <td>{{ venue.STREET1 }}, {{ venue.STREET2 }}, {{ venue.STATE }} {{ venue.ZIP }}</td>
         </tr>
       </tbody>
     </table>
@@ -63,8 +63,11 @@
 </template>
 
 <script>
-import axios from "axios";
+//import axios from "axios";
 import FetchData from "../functions/FetchData";
+import "./Page2.css";
+//const baseURL = "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api/rest";
+//const baseURL = "http://localhost:8080/data-api/rest";
 
 export default {
   name: "Page2",
@@ -82,24 +85,29 @@ export default {
     async fetchData() {
       try {
         // Fetch data from the database
-        const baseURL = "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api/rest";
 
-        const [bandsResponse, venuesResponse, eventsResponse] = await Promise.all([
-          axios.get(`${baseURL}/Bands`),
+        /*
+        const [venuesResponse] = await Promise.all([
           axios.get(`${baseURL}/Venues`),
-          axios.get(`${baseURL}/Events`),
         ]);
+        const bandsResponse = await axios.get(`${baseURL}/Bands`);
+        const eventsResponse = await axios.get(`${baseURL}/Events`);
+        console.log(bandsResponse.data.value);
+        */
 
-        const bands = await FetchData('bands');
-        const venues = await FetchData('venues');
-        const events = await FetchData('events');
+        const bands = await FetchData('Bands');
+        const venues = await FetchData('Venues');
+        const events = await FetchData('Events');
 
-        console.log( bands, venues, events);
+        console.log(bands);
+        console.log(venues);
+        console.log(events);
+
 
         // Assign data to variables
-        this.bands = bandsResponse.data.value || [];
-        this.venues = venuesResponse.data.value || [];
-        this.events = eventsResponse.data.value || [];
+        this.bands = bands || [];
+        this.venues = venues || [];
+        this.events = events || [];
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -108,25 +116,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.page2-container {
-  padding: 1rem;
-}
-
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 2rem;
-}
-
-.data-table th,
-.data-table td {
-  border: 1px solid #ddd;
-  padding: 0.5rem;
-  text-align: left;
-}
-
-.data-table th {
-  background-color: #f4f4f4;
-}
-</style>

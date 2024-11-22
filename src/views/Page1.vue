@@ -64,7 +64,10 @@ import axios from "axios";
 import Sidebar from "@/components/Sidebar.vue";
 import "./Page1.css";
 
-const baseURL = "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api/rest"; // Declare baseURL here
+import FetchData from "../functions/FetchData";
+
+//const baseURL = "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api/rest"; // Declare baseURL here
+const baseURL = "http://localhost:8080/data-api";
 
 export default {
   components: {
@@ -91,15 +94,20 @@ export default {
   methods: {
     async fetchBandsAndEvents() {
       try {
-        const baseURL = "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api";
-        const bandsResponse = await axios.get(`${baseURL}/rest/Bands`);
+        const bandsResponse = await FetchData('Bands');
+
+        const venuesResponse = await axios.get(`${baseURL}/rest/Venues`);
+
+
+
         const eventsResponse = await axios.get(`${baseURL}/rest/Events`);
 
 
         console.log(bandsResponse);
-        console.log(eventsResponse.body);
+        console.log(venuesResponse.data.value);
         // Map events to their respective bands
-        const bands = bandsResponse.data.value.map((band) => ({
+        
+        const bands = bandsResponse.map((band) => ({
           id: band.ID, // Correcting the field name
           name: band.NAME, // Correcting the field name
           events: [],
