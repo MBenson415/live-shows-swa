@@ -1,0 +1,21 @@
+/* colors.css */
+
+/* Green shades */
+:root {
+  --light-green: #8ce78a;
+  --conifer: #C5E361;
+  --magic-mint: #A3EBC3;
+  --hippie-green: #6C9258;
+  --oxley: #6C9B73;
+
+  /* Dark olive greens */
+  --dark-olive-green: #5D7D33;
+  --dark-olive-green-2: #5C6C34;
+
+  /* Turquoise shades */
+  --turquoise: #31f3ce;
+  --turquoise-2: #51EDB6;
+
+  /* Other colors */
+  --black-bean: #1a1f19;
+}
