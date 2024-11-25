@@ -1,0 +1,16 @@
+#app {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  margin-left: min(20%, 200px); /* Matches Sidebar width */
+  padding-inline: 2rem; /* Adds some padding from edges of screen */
+  background-color: var(--magic-mint);
+  min-height: 100vh;
+}

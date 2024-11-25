@@ -2,6 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "@/router"; // Import the router
 import "./assets/style.css";
+import "./assets/colors.css"; // Global colors from palette
+
 
 Vue.config.productionTip = false;
 
