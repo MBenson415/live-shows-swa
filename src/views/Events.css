@@ -1,0 +1,72 @@
+.events-container {
+  padding-left: min(20%, 200px);;
+}
+
+.events-main-content {
+  padding: 1rem;
+}
+
+.events-form {
+  margin-bottom: 2rem;
+}
+
+.events-form-group {
+  margin-bottom: 1rem;
+}
+
+.events-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.events-button:hover {
+  background-color: #0056b3;
+}
+
+.events-events-list {
+  list-style: none;
+  padding: 0;
+}
+
+.events-event-item {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.events-action-buttons {
+  margin-top: 1rem;
+}
+
+.events-edit-button,
+.events-delete-button {
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.events-edit-button {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.events-edit-button:hover {
+  background-color: #e0a800;
+}
+
+.events-delete-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.events-delete-button:hover {
+  background-color: #c82333;
+}

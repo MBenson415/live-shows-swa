@@ -1,0 +1,66 @@
+.venues-container {
+  display: flex;
+}
+
+.venues-main-content {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.venues-form {
+  margin-bottom: 2rem;
+}
+
+.venues-form-group {
+  margin-bottom: 1rem;
+}
+
+.venues-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.venues-button:hover {
+  background-color: #0056b3;
+}
+
+.venues-list {
+  list-style: none;
+  padding: 0;
+}
+
+.venues-item {
+  margin-bottom: 1.5rem;
+}
+
+.venues-edit-button,
+.venues-delete-button {
+  margin-left: 1rem;
+  padding: 0.25rem 0.5rem;
+  background-color: none;
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.venues-edit-button:hover,
+.venues-delete-button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.venues-cancel-button {
+  margin-left: 1rem;
+  padding: 0.25rem 0.5rem;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
