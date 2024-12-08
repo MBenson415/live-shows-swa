@@ -140,7 +140,7 @@ export default {
     },
     async handleEditVenueSubmit() {
       try {
-        await axios.patch(`${baseURL}/rest/Venues/${this.editingVenue.id}`, this.editingVenue);
+        await axios.patch(`${baseURL}/rest/Venues/ID/${this.editingVenue.id}`, this.editingVenue);
         this.fetchVenues();
         this.editingVenue = null;
       } catch (error) {

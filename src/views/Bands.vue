@@ -124,8 +124,8 @@ export default {
     },
     async handleEditBandSubmit() {
       try {
-        await axios.patch(`${baseURL}/rest/Bands/${this.editingBand.id}`, {
-          NAME: this.editingBand.name,
+        await axios.patch(`${baseURL}/rest/Bands/ID/${this.editingBand.id}`, {
+          NAME: this.editingBand.NAME,
         });
         this.fetchBands();
         this.editingBand = null; // Exit edit mode
