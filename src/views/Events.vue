@@ -1,6 +1,5 @@
 <template>
   <div class="events-container">
-    <Sidebar />
     <div class="events-main-content">
       <h1>Event Management</h1>
 
@@ -50,7 +49,6 @@
 
 <script>
 import axios from "axios";
-import Sidebar from "@/components/Sidebar.vue";
 import FetchData from "../functions/FetchData";
 import "./Events.css";
 
@@ -60,7 +58,6 @@ const baseURL = window.location.hostname === "localhost"
 
 export default {
   components: {
-    Sidebar,
   },
   name: "Events",
   data() {

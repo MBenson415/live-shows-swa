@@ -1,6 +1,5 @@
 <template>
   <div class="venues-container">
-    <Sidebar />
     <div class="venues-main-content">
       <h1>Venue Management</h1>
 
@@ -75,7 +74,6 @@
 
 <script>
 import axios from "axios";
-import Sidebar from "@/components/Sidebar.vue";
 import FetchData from "../functions/FetchData";
 import "./Venues.css";
 
@@ -85,7 +83,6 @@ const baseURL = window.location.hostname === "localhost"
 
 export default {
   components: {
-    Sidebar,
   },
   name: "Venues",
   data() {
