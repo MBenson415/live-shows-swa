@@ -1,6 +1,7 @@
 #app {
   margin: 0;
   padding: 0;
+  background-color: var(--black-bean);
 }
 
 body {
@@ -11,6 +12,6 @@ body {
 .main-content {
   margin-left: min(20%, 200px); /* Matches Sidebar width */
   padding-inline: 2rem; /* Adds some padding from edges of screen */
-  background-color: var(--magic-mint);
   min-height: 100vh;
+  color: white;
 }

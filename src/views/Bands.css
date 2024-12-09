@@ -7,8 +7,14 @@
   margin: auto;
 }
 
+.bands-header {
+  font-size: 3rem;
+}
+
 .bands-form {
-  margin-bottom: 2rem;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .bands-form-group {
@@ -17,13 +23,20 @@
 
 .bands-list {
   list-style: none;
-  padding: 0;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .bands-item {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
+}
+
+.band-name {
+  flex: 3;
+  font-size: 1.5rem;
 }
 
 .bands-button,
@@ -35,19 +48,42 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  flex: 1;
+}
+
+.bands-button {
+  color: #000;
+  box-shadow:inset 0px 1px 0px 0px #9acc85;
+	background:linear-gradient(to bottom, var(--dark-olive-green) 5%, var(--dark-olive-green-2) 100%);
+  background-color: var(--dark-olive-green);
+	border:1px solid #3b6e22;
+	color: #ffffff;
+	font-size: 1rem;
+	font-weight:bold;
+	text-decoration:none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.bands-button:hover {
+	background:linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
+	background-color:#68a54b;
+}
+.bands-button:active {
+	background:linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
+	background-color:#68a54b;
+  transform: scale(0.95);
 }
 
 .bands-edit-button {
   background-color: #51edb6;
   color: #000;
 }
+.bands-edit-button:hover {
+  background:linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
+  background-color:#68a54b;
+}
 
 .bands-delete-button {
   background-color: #f55;
   color: #fff;
-}
-
-.bands-button {
-  background-color: #31f3ce;
-  color: #000;
 }

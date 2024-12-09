@@ -1,6 +1,7 @@
 <template>
   <div class="sidebar">
-    <ul>
+    <ul class="sidebar-list">
+      <!--
       <li>
         <router-link to="/page1">Page 1</router-link>
       </li>
@@ -10,14 +11,15 @@
       <li>
         <router-link to="/page3">Page 3</router-link>
       </li>
-      <li>
-        <router-link to="/bands">Bands</router-link>
+      -->
+      <li class="sidebar-list-item">
+        <router-link class="sidebar-link-container" to="/bands"><div class="sidebar-link">Bands</div></router-link>
       </li>
-      <li>
-        <router-link to="/venues">Venues</router-link>
+      <li class="sidebar-list-item">
+        <router-link class="sidebar-link-container" to="/venues"><div class="sidebar-link">Venues</div></router-link>
       </li>
-      <li>
-        <router-link to="/events">Events</router-link>
+      <li class="sidebar-list-item">
+        <router-link class="sidebar-link-container" to="/events"><div class="sidebar-link">Events</div></router-link>
       </li>
     </ul>
   </div>

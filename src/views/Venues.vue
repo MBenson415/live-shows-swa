@@ -1,6 +1,5 @@
 <template>
   <div class="venues-container">
-    <Sidebar />
     <div class="venues-main-content">
       <h1>Venue Management</h1>
 
@@ -75,7 +74,6 @@
 
 <script>
 import axios from "axios";
-import Sidebar from "@/components/Sidebar.vue";
 import FetchData from "../functions/FetchData";
 import "./Venues.css";
 
@@ -85,7 +83,6 @@ const baseURL = window.location.hostname === "localhost"
 
 export default {
   components: {
-    Sidebar,
   },
   name: "Venues",
   data() {
@@ -140,7 +137,7 @@ export default {
     },
     async handleEditVenueSubmit() {
       try {
-        await axios.patch(`${baseURL}/rest/Venues/${this.editingVenue.id}`, this.editingVenue);
+        await axios.patch(`${baseURL}/rest/Venues/ID/${this.editingVenue.id}`, this.editingVenue);
         this.fetchVenues();
         this.editingVenue = null;
       } catch (error) {

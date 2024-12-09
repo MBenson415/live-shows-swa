@@ -1,14 +1,13 @@
 <template>
   <div class="bands-container">
-    <Sidebar />
     <div class="bands-main-content">
-      <h1>Band Management</h1>
+      <h1 class="bands-header">Band Management</h1>
 
       <!-- Add Band Form -->
       <form @submit.prevent="handleBandSubmit" class="bands-form">
-        <h2>Add Band</h2>
+        <h2>In a new band? Add it to the list here!</h2>
         <div class="bands-form-group">
-          <label for="band-name">Band Name:</label>
+          <label for="band-name">Band Name: </label>
           <input v-model="newBand.NAME" id="band-name" type="text" required />
         </div>
         <button class="bands-button" type="submit">Add Band</button>
@@ -16,9 +15,12 @@
 
       <!-- Display and Manage Bands -->
       <h2>Existing Bands</h2>
+      <h3>Here's a list of the current bands listed in the database. 
+        <br>Edit using the edit button. Delete using the delete button.
+      </h3>
       <ul class="bands-list">
         <li v-for="(band, bandIndex) in bands" :key="band.id" class="bands-item">
-          <strong>{{ band.name }}</strong>
+          <strong class="band-name">{{ band.name }}</strong>
           <button class="bands-edit-button" @click="editBand(band)">Edit</button>
           <button class="bands-delete-button" @click="deleteBand(band.id, bandIndex)">
             Delete
@@ -30,7 +32,7 @@
       <form v-if="editingBand" @submit.prevent="handleEditBandSubmit" class="bands-form">
         <h2>Edit Band</h2>
         <div class="bands-form-group">
-          <label for="edit-band-name">Band Name:</label>
+          <label for="edit-band-name">Band Name: </label>
           <input
             v-model="editingBand.NAME"
             id="edit-band-name"
@@ -47,7 +49,6 @@
 
 <script>
 import axios from "axios";
-import Sidebar from "@/components/Sidebar.vue";
 import "./Bands.css";
 
 import FetchData from "../functions/FetchData";
@@ -59,7 +60,6 @@ const baseURL =
 
 export default {
   components: {
-    Sidebar,
   },
   name: "Bands",
   data() {
@@ -124,8 +124,8 @@ export default {
     },
     async handleEditBandSubmit() {
       try {
-        await axios.patch(`${baseURL}/rest/Bands/${this.editingBand.id}`, {
-          NAME: this.editingBand.name,
+        await axios.patch(`${baseURL}/rest/Bands/ID/${this.editingBand.id}`, {
+          NAME: this.editingBand.NAME,
         });
         this.fetchBands();
         this.editingBand = null; // Exit edit mode
