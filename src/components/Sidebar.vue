@@ -13,13 +13,13 @@
       </li>
       -->
       <li class="sidebar-list-item">
-        <router-link class="sidebar-link-container" to="/bands"><div class="sidebar-link">Bands</div></router-link>
+        <router-link class="sidebar-link-container" to="/events"><div class="sidebar-link">Events</div></router-link>
       </li>
       <li class="sidebar-list-item">
         <router-link class="sidebar-link-container" to="/venues"><div class="sidebar-link">Venues</div></router-link>
       </li>
       <li class="sidebar-list-item">
-        <router-link class="sidebar-link-container" to="/events"><div class="sidebar-link">Events</div></router-link>
+        <router-link class="sidebar-link-container" to="/bands"><div class="sidebar-link">Bands</div></router-link>
       </li>
     </ul>
   </div>
