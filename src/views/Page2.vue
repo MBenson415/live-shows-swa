@@ -34,7 +34,7 @@
         <tr v-for="venue in venues" :key="venue.ID">
           <td>{{ venue.ID }}</td>
           <td>{{ venue.NAME }}</td>
-          <td>{{ venue.STREET1 }}, {{ venue.STREET2 }}, {{ venue.STATE }} {{ venue.ZIP }}</td>
+          <td>{{ venue.STREET }}, {{ venue.CITY }}, {{ venue.STATE }} {{ venue.ZIP }}</td>
         </tr>
       </tbody>
     </table>

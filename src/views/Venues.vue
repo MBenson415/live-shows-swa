@@ -11,11 +11,11 @@
           <input v-model="newVenue.NAME" id="venue-name" type="text" required />
         </div>
         <div class="venues-form-group">
-          <label for="street1">Street (Number and Name):</label>
+          <label for="street">Street (Number and Name):</label>
           <input v-model="newVenue.STREET" id="street" type="text" required />
         </div>
         <div class="venues-form-group">
-          <label for="street2">City:</label>
+          <label for="city">City:</label>
           <input v-model="newVenue.CITY" id="city" type="text" required />
         </div>
         <div class="venues-form-group">
@@ -50,12 +50,12 @@
           <input v-model="editingVenue.NAME" id="edit-venue-name" type="text" required />
         </div>
         <div class="venues-form-group">
-          <label for="edit-street1">Street (Number and Name):</label>
-          <input v-model="editingVenue.STREET" id="edit-street1" type="text" required />
+          <label for="edit-street">Street (Number and Name):</label>
+          <input v-model="editingVenue.STREET" id="edit-street" type="text" required />
         </div>
         <div class="venues-form-group">
-          <label for="edit-street2">City:</label>
-          <input v-model="editingVenue.CITY" id="edit-street2" type="text" required />
+          <label for="edit-city">City:</label>
+          <input v-model="editingVenue.CITY" id="edit-city" type="text" required />
         </div>
         <div class="venues-form-group">
           <label for="edit-state">State (2 Characters):</label>
