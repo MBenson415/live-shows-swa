@@ -12,11 +12,11 @@
         </div>
         <div class="venues-form-group">
           <label for="street1">Street (Number and Name):</label>
-          <input v-model="newVenue.STREET1" id="street1" type="text" required />
+          <input v-model="newVenue.STREET" id="street" type="text" required />
         </div>
         <div class="venues-form-group">
           <label for="street2">City:</label>
-          <input v-model="newVenue.STREET2" id="street2" type="text" required />
+          <input v-model="newVenue.CITY" id="city" type="text" required />
         </div>
         <div class="venues-form-group">
           <label for="state">State (2 Characters):</label>
@@ -34,7 +34,7 @@
       <ul class="venues-list">
         <li v-for="(venue, index) in venues" :key="venue.id" class="venues-item">
           <strong>{{ venue.NAME }}</strong>
-          <p>{{ venue.STREET1 }}, {{ venue.STREET2 }}, {{ venue.STATE }} {{ venue.ZIP }}</p>
+          <p>{{ venue.STREET }}, {{ venue.CITY }}, {{ venue.STATE }} {{ venue.ZIP }}</p>
           <button class="venues-edit-button" @click="editVenue(venue)">Edit</button>
           <button class="venues-delete-button" @click="confirmDelete(venue.id, index)">
             Delete
@@ -51,11 +51,11 @@
         </div>
         <div class="venues-form-group">
           <label for="edit-street1">Street (Number and Name):</label>
-          <input v-model="editingVenue.STREET1" id="edit-street1" type="text" required />
+          <input v-model="editingVenue.STREET" id="edit-street1" type="text" required />
         </div>
         <div class="venues-form-group">
           <label for="edit-street2">City:</label>
-          <input v-model="editingVenue.STREET2" id="edit-street2" type="text" required />
+          <input v-model="editingVenue.CITY" id="edit-street2" type="text" required />
         </div>
         <div class="venues-form-group">
           <label for="edit-state">State (2 Characters):</label>
@@ -89,8 +89,8 @@ export default {
     return {
       newVenue: {
         NAME: "",
-        STREET1: "",
-        STREET2: "",
+        STREET: "",
+        CITY: "",
         STATE: "",
         ZIP: "",
       },
@@ -108,8 +108,8 @@ export default {
         this.venues = response.map((venue) => ({
           id: venue.ID,
           NAME: venue.NAME,
-          STREET1: venue.STREET1,
-          STREET2: venue.STREET2,
+          STREET: venue.STREET,
+          CITY: venue.CITY,
           STATE: venue.STATE,
           ZIP: venue.ZIP,
         }));
@@ -120,8 +120,8 @@ export default {
     resetVenueForm() {
       this.newVenue = {
         NAME: "",
-        STREET1: "",
-        STREET2: "",
+        STREET: "",
+        CITY: "",
         STATE: "",
         ZIP: "",
       };
