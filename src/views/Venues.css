@@ -36,6 +36,8 @@
 
 .venues-item {
   margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .venues-edit-button,
