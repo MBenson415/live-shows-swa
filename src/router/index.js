@@ -13,7 +13,7 @@ Vue.use(VueRouter);
 
 // Define routes
 const routes = [
-  { path: "/", redirect: "/page1" }, // Redirect root to Page1
+  { path: "/", redirect: "/events" }, // Redirect root to Page1
   { path: "/page1", component: Page1 },
   { path: "/page2", component: Page2 },
   { path: "/page3", component: Page3 },
