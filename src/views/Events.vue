@@ -4,11 +4,12 @@
       <h1>Event Management</h1>
 
       <!-- Add Event Form -->
-      <form v-if="!editingEvent" @submit.prevent="handleEventSubmit" class="events-form">
+      <form v-if="!editingEvent" @submit.prevent="handleEventSubmit" class="events-form" >
+
         <h2>Add Event</h2>
         <div class="events-form-group">
           <label for="event-name">Event Name: </label>
-          <input v-model="newEvent.name" id="name" type="text" />
+          <input v-model="newEvent.name" id="name" type="text"/>
         </div>
         <div class="events-form-group">
           <label for="band">Band: </label>
@@ -44,6 +45,7 @@
         </div>
         <button class="events-button" type="submit">Add Event</button>
         <button class="azure-storage-button" onclick=" window.open('https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2F4c6dabdd-a6e5-4e06-be96-74b110203a4a%2FresourceGroups%2Fretrieveshowsapi%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fsquarespacemusic/path/%24web/etag/%220x8DD254A2FE12B12%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/Blob`','_blank')" >Open Azure Storage</button>
+
       </form>
 
       <!-- Edit Event Form -->
@@ -148,7 +150,7 @@ export default {
       try {
         const bandsResponse = await FetchData("Bands");
         const venuesResponse = await axios.get(`${baseURL}/rest/Venues`);
-        const eventsResponse = await axios.get(`${baseURL}/rest/Events`);
+        const eventsResponse = await axios.get(`${baseURL}/rest/Events?$orderby=DATE%20desc`);
 
         this.bands = bandsResponse.map((band) => ({
           id: band.ID,

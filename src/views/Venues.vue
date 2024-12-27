@@ -28,7 +28,7 @@
         </div>
         <div class="venues-form-group">
           <label for="country">Country: </label>
-          <input v-model="newVenue.COUNTRY" id="country" type="text" maxlength="55" required />
+          <input v-model="newVenue.COUNTRY" id="country" type="text" maxlength="55"  required />
         </div>
         <button class="venues-button" type="submit">Add Venue</button>
       </form>
@@ -37,12 +37,13 @@
       <h2>All Venues</h2>
       <ul class="venues-list">
         <li v-for="(venue, index) in venues" :key="venue.id" class="venues-item">
-          <strong>{{ venue.NAME }}</strong>
-          <p>{{ venue.STREET }}, {{ venue.CITY }}, {{ venue.STATE }} {{ venue.ZIP }}, {{venue.COUNTRY}}</p>
+          <p><strong>{{ venue.NAME }}</strong><a :href="`${ venue.GOOGLE_MAPS_LINK }`" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" class="google-maps-icon"></a></p>
+          <P>
+          {{ venue.STREET }} <br>
+          {{ venue.CITY }}, {{ venue.STATE }} {{ venue.ZIP }}<br>
+          {{venue.COUNTRY}}</p>
           <button class="venues-edit-button" @click="editVenue(venue)">Edit</button>
-          <button class="venues-delete-button" @click="confirmDelete(venue.id, index)">
-            Delete
-          </button>
+          <button class="venues-delete-button" @click="confirmDelete(venue.id, index)">Delete</button>
         </li>
       </ul>
 
@@ -82,8 +83,8 @@
 
 <script>
 import axios from "axios";
-import FetchData from "../functions/FetchData";
 import "./Venues.css";
+import FetchDataWithParams from "../functions/FetchDataWithParams";
 
 const baseURL = window.location.hostname === "localhost"
   ? "http://localhost:8080/data-api"
@@ -101,7 +102,7 @@ export default {
         CITY: "",
         STATE: "",
         ZIP: "",
-        COUNTRY: ""
+        COUNTRY: "",
       },
       venues: [],
       editingVenue: null,
@@ -113,7 +114,7 @@ export default {
   methods: {
     async fetchVenues() {
       try {
-        const response = await FetchData("Venues");
+        const response = await FetchDataWithParams("Venues", "STATE", "asc");
         this.venues = response.map((venue) => ({
           id: venue.ID,
           NAME: venue.NAME,
@@ -121,7 +122,8 @@ export default {
           CITY: venue.CITY,
           STATE: venue.STATE,
           ZIP: venue.ZIP,
-          COUNTRY: venue.COUNTRY
+          COUNTRY: venue.COUNTRY,
+          GOOGLE_MAPS_LINK: venue.GOOGLE_MAPS_LINK,
         }));
       } catch (error) {
         console.error("Error fetching venues:", error);

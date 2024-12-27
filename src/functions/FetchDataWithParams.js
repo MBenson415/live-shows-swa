@@ -5,14 +5,14 @@ const baseURL = window.location.hostname === "localhost"
   ? "http://localhost:8080/data-api"
   : "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api";
 
-const FetchData = async (valueType) => {
+const FetchDataWithParams = async (valueType, orderBy, orderByOrder) => {
   try {
     // Validate the valueType to ensure it's one of the expected types
     if (!['Bands', 'Venues', 'Events'].includes(valueType)) {
       throw new Error("Invalid value type. Must be 'bands', 'venues', or 'events'.");
     }
 
-      const response = await axios.get(`${baseURL}/rest/${valueType}`)
+    const response =  await axios.get(`${baseURL}/rest/${valueType}?$orderby=${orderBy}%20${orderByOrder}`)
 
     
     console.log(response.data.value); // Log the fetched data
@@ -30,4 +30,4 @@ const FetchData = async (valueType) => {
   }
 };
 
-export default FetchData;
+export default FetchDataWithParams;

@@ -1,6 +1,6 @@
 .sidebar {
   width: min(20%, 200px);
-  background-color: var(--dark-olive-green);
+  background-color: #9FE7B7;
   padding: 1rem;
   position: fixed;
   top: 0;
@@ -21,7 +21,7 @@
 
 .sidebar-link-container {
   text-decoration: none;
-  color: var(--black-bean);
+  color: black;
 }
 
 .sidebar-link {
@@ -30,10 +30,9 @@
 }
 
 .sidebar-link:hover {
-  color: white;
+  color: grey;
 }
 .router-link-active {
-  color: white;
+  color: black;
   font-weight: bold;
-  text-decoration: underline;
 }
