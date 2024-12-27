@@ -7,34 +7,38 @@
       <form @submit.prevent="handleVenueSubmit" class="venues-form">
         <h2>Add Venue</h2>
         <div class="venues-form-group">
-          <label for="venue-name">Venue Name:</label>
+          <label for="venue-name">Venue Name: </label>
           <input v-model="newVenue.NAME" id="venue-name" type="text" required />
         </div>
         <div class="venues-form-group">
-          <label for="street">Street (Number and Name):</label>
+          <label for="street">Street (Number and Name): </label>
           <input v-model="newVenue.STREET" id="street" type="text" required />
         </div>
         <div class="venues-form-group">
-          <label for="city">City:</label>
+          <label for="city">City: </label>
           <input v-model="newVenue.CITY" id="city" type="text" required />
         </div>
         <div class="venues-form-group">
-          <label for="state">State (2 Characters):</label>
+          <label for="state">State (2 Characters): </label>
           <input v-model="newVenue.STATE" id="state" type="text" maxlength="2" required />
         </div>
         <div class="venues-form-group">
-          <label for="zip">ZIP (5 Digits):</label>
+          <label for="zip">ZIP (5 Digits): </label>
           <input v-model="newVenue.ZIP" id="zip" type="number" maxlength="5" required />
+        </div>
+        <div class="venues-form-group">
+          <label for="country">Country: </label>
+          <input v-model="newVenue.COUNTRY" id="country" type="text" maxlength="55" required />
         </div>
         <button class="venues-button" type="submit">Add Venue</button>
       </form>
 
       <!-- Display and Manage Venues -->
-      <h2>Existing Venues</h2>
+      <h2>All Venues</h2>
       <ul class="venues-list">
         <li v-for="(venue, index) in venues" :key="venue.id" class="venues-item">
           <strong>{{ venue.NAME }}</strong>
-          <p>{{ venue.STREET }}, {{ venue.CITY }}, {{ venue.STATE }} {{ venue.ZIP }}</p>
+          <p>{{ venue.STREET }}, {{ venue.CITY }}, {{ venue.STATE }} {{ venue.ZIP }}, {{venue.COUNTRY}}</p>
           <button class="venues-edit-button" @click="editVenue(venue)">Edit</button>
           <button class="venues-delete-button" @click="confirmDelete(venue.id, index)">
             Delete
@@ -46,24 +50,28 @@
       <form v-if="editingVenue" @submit.prevent="handleEditVenueSubmit" class="venues-form">
         <h2>Edit Venue</h2>
         <div class="venues-form-group">
-          <label for="edit-venue-name">Venue Name:</label>
+          <label for="edit-venue-name">Venue Name: </label>
           <input v-model="editingVenue.NAME" id="edit-venue-name" type="text" required />
         </div>
         <div class="venues-form-group">
-          <label for="edit-street">Street (Number and Name):</label>
+          <label for="edit-street">Street (Number and Name): </label>
           <input v-model="editingVenue.STREET" id="edit-street" type="text" required />
         </div>
         <div class="venues-form-group">
-          <label for="edit-city">City:</label>
+          <label for="edit-city">City: </label>
           <input v-model="editingVenue.CITY" id="edit-city" type="text" required />
         </div>
         <div class="venues-form-group">
-          <label for="edit-state">State (2 Characters):</label>
+          <label for="edit-state">State (2 Characters): </label>
           <input v-model="editingVenue.STATE" id="edit-state" type="text" maxlength="2" required />
         </div>
         <div class="venues-form-group">
-          <label for="edit-zip">ZIP (5 Digits):</label>
+          <label for="edit-zip">ZIP (5 Digits): </label>
           <input v-model="editingVenue.ZIP" id="edit-zip" type="number" maxlength="5" required />
+        </div>
+        <div class="venues-form-group">
+          <label for="edit-country">Country: </label>
+          <input v-model="editingVenue.COUNTRY" id="edit-country" type="text" maxlength="55" required />
         </div>
         <button class="venues-button" type="submit">Save Changes</button>
         <button class="venues-cancel-button" @click="cancelEdit">Cancel</button>
@@ -93,6 +101,7 @@ export default {
         CITY: "",
         STATE: "",
         ZIP: "",
+        COUNTRY: ""
       },
       venues: [],
       editingVenue: null,
@@ -112,6 +121,7 @@ export default {
           CITY: venue.CITY,
           STATE: venue.STATE,
           ZIP: venue.ZIP,
+          COUNTRY: venue.COUNTRY
         }));
       } catch (error) {
         console.error("Error fetching venues:", error);
@@ -123,7 +133,8 @@ export default {
         STREET: "",
         CITY: "",
         STATE: "",
-        ZIP: "",
+        ZIP: null,
+        COUNTRY: ""
       };
     },
     async handleVenueSubmit() {

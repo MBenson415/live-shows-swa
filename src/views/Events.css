@@ -1,20 +1,20 @@
-.events-container {
-  padding-left: min(20%, 200px);;
-}
-
 .events-main-content {
   padding: 1rem;
 }
 
 .events-form {
   margin-bottom: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
 }
 
 .events-form-group {
   margin-bottom: 1rem;
 }
 
-.events-button {
+.events-button,
+.azure-storage-button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   background-color: #007bff;
@@ -22,7 +22,40 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
+.azure-storage-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #7b00ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.azure-storage-button:hover {
+	background-color:#7b00ffaa;
+}
+
+
+.events-cancel-button {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.events-cancel-button:hover {
+  background-color: #c82333;
+}
+
 
 .events-button:hover {
   background-color: #0056b3;

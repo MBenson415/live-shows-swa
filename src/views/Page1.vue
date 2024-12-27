@@ -22,12 +22,12 @@
           <input v-model="newVenue.NAME" id="venue-name" type="text" required />
         </div>
         <div class="page1-form-group">
-          <label for="street1">Street (Number and Name):</label>
-          <input v-model="newVenue.STREET1" id="street1" type="text" required />
+          <label for="street">Street (Number and Name):</label>
+          <input v-model="newVenue.STREET" id="street" type="text" required />
         </div>
         <div class="page1-form-group">
-          <label for="street2">City:</label>
-          <input v-model="newVenue.STREET2" id="street2" type="text" required />
+          <label for="city">City:</label>
+          <input v-model="newVenue.CITY" id="city" type="text" required />
         </div>
         <div class="page1-form-group">
           <label for="state">State (2 Characters):</label>
@@ -48,6 +48,10 @@
             maxlength="5"
             required
           />
+        </div>
+        <div class="page1-form-group">
+          <label for="country">Country:</label>
+          <input v-model="newVenue.COUNTRY" id="country" type="text" required />
         </div>
         <button class="page1-button" type="submit">Add Venue</button>
       </form>
