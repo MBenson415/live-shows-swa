@@ -36,3 +36,15 @@
   color: black;
   font-weight: bold;
 }
+
+.sidebar-link-home {
+  justify-content: end;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: black;  
+  transition: color 0.25s ease;
+}
+
+.sidebar-link-home:hover {
+  color: grey;
+}

@@ -21,6 +21,9 @@
       <li class="sidebar-list-item">
         <router-link class="sidebar-link-container" to="/bands"><div class="sidebar-link">Bands</div></router-link>
       </li>
+      <li class="sidebar-list-item">
+        <a href="https://marshallbenson.com/live" target="_blank" class="sidebar-link-home">Squarespace</a>
+      </li>
     </ul>
   </div>
 </template>
