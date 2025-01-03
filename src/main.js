@@ -3,7 +3,14 @@ import App from "./App.vue";
 import router from "@/router"; // Import the router
 import "./assets/style.css";
 import "./assets/colors.css"; // Global colors from palette
+import * as VueGoogleMaps from 'vue2-google-maps';
 
+Vue.use(VueGoogleMaps, {
+  load: {
+        key: 'AIzaSyB1f5M4esX6NqhJcrZ5AtZ1dHzzG-6vBSg',
+        libraries: 'places',
+      }
+    });
 
 Vue.config.productionTip = false;
 

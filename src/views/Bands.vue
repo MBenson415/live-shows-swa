@@ -61,7 +61,6 @@
 <script>
 import axios from "axios";
 import "./Bands.css";
-
 import FetchData from "../functions/FetchData";
 
 const baseURL =
