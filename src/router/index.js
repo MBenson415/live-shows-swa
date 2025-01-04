@@ -6,7 +6,6 @@ import Page3 from "@/views/Page3.vue";
 import Bands from "@/views/Bands.vue";
 import Venues from "@/views/Venues.vue";
 import Events from "@/views/Events.vue";
-import PlacesDev from "@/views/PlacesDev.vue";
 
 
 // Install Vue Router
@@ -21,7 +20,6 @@ const routes = [
   { path: "/bands", component: Bands },
   { path: "/venues", component: Venues },
   { path: "/events", component: Events },
-  { path: "/PlacesDev", component: PlacesDev },
 ];
 
 // Create the router instance

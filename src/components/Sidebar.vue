@@ -19,9 +19,6 @@
         <router-link class="sidebar-link-container" to="/venues"><div class="sidebar-link">Venues</div></router-link>
       </li>
       <li class="sidebar-list-item">
-        <router-link class="sidebar-link-container" to="/PlacesDev"><div class="sidebar-link">Places Dev</div></router-link>
-      </li>
-      <li class="sidebar-list-item">
         <router-link class="sidebar-link-container" to="/bands"><div class="sidebar-link">Bands</div></router-link>
       </li>
       <li class="sidebar-list-item">
