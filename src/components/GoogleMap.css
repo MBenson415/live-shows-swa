@@ -1,5 +1,4 @@
 .map-search-container {
-    padding-left: 500px;
     color: antiquewhite;
   }
 
@@ -9,5 +8,7 @@
 
 .address {
     color: white;
-    padding-left: 500px;
+    text-align: center;
+    float: inline-start;
+    color: white;
 }

@@ -80,6 +80,7 @@ export default {
       },
       bands: [],
       editingBand: null, // Stores the band being edited
+
     };
   },
   mounted() {

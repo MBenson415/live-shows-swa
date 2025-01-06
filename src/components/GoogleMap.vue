@@ -1,7 +1,15 @@
+<!--
+
+To Do:
+
+2. Bind GmapAutocomplete results to New Venue form
+3. Hide API Key
+
+-->
+
 <template>
     <div>
       <div class="map-search-container">
-        <h2>Search for a venue</h2>
         <GmapAutocomplete class="map-search-box"
           @place_changed='setPlace'
         />
@@ -11,11 +19,11 @@
           Add
         </button>
       </div>
-      <br>
+      
       <GmapMap
         :center='center'
         :zoom='12'
-        style='width:100%;  height: 400px;'
+        style="width: 500px; height: 500px; float:right;"
       >
         <GmapMarker
           :key="index"
@@ -69,13 +77,13 @@
         this.state = this.split_formatted_address[2].split(" ")[0];
         this.zipcode = this.split_formatted_address[2].split(" ")[1];
         this.country = this.split_formatted_address[3];
-        console.log("Name: "+this.name);
-        console.log("Address:"+ this.formatted_address);
-        console.log("Street:"+ this.street);
-        console.log("City:"+ this.city);
-        console.log("State:"+ this.state);
-        console.log("Zip Code:"+ this.zipcode);
-        console.log("Country:"+ this.country);
+        //console.log("Name: "+this.name);
+        //console.log("Address:"+ this.formatted_address);
+        //console.log("Street:"+ this.street);
+        //console.log("City:"+ this.city);
+        //console.log("State:"+ this.state);
+        //console.log("Zip Code:"+ this.zipcode);
+        //console.log("Country:"+ this.country);
       },
       addMarker() {
         if (this.currentPlace) {
@@ -99,4 +107,6 @@
       },
     },
   };
+
+
   </script>

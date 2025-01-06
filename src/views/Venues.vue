@@ -1,11 +1,14 @@
 <template>
-  <div class="venues-container">
-    <div class="venues-main-content">
-      <h1>Venue Management</h1>
-
-      <!-- Add Venue Form -->
-      <form @submit.prevent="handleVenueSubmit" class="venues-form">
-        <h2>Add Venue</h2>
+  <div>
+    
+    <div class="venues-container">
+      <div class="venues-main-content">
+        <h1>Venue Management</h1>
+        
+        <!-- Add Venue Form -->
+        <form @submit.prevent="handleVenueSubmit" class="venues-form">
+          <h2>Add Venue</h2>
+          <GoogleMap />
         <div class="venues-form-group">
           <label for="venue-name">Venue Name: </label>
           <input v-model="newVenue.NAME" id="venue-name" type="text" required />
@@ -79,12 +82,14 @@
       </form>
     </div>
   </div>
+</div>
 </template>
 
 <script>
 import axios from "axios";
 import "./Venues.css";
 import FetchDataWithParams from "../functions/FetchDataWithParams";
+import GoogleMap from "../components/GoogleMap.vue";
 
 const baseURL = window.location.hostname === "localhost"
   ? "http://localhost:8080/data-api"
@@ -92,6 +97,7 @@ const baseURL = window.location.hostname === "localhost"
 
 export default {
   components: {
+    GoogleMap
   },
   name: "Venues",
   data() {
