@@ -1,12 +1,3 @@
-<!--
-
-To Do:
-
-2. Bind GmapAutocomplete results to New Venue form
-3. Hide API Key
-
--->
-
 <template>
     <div>
       <div class="map-search-container">

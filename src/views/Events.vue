@@ -115,6 +115,14 @@ import axios from "axios";
 import FetchData from "../functions/FetchData";
 import "./Events.css";
 
+//construct date for REST API query parameters
+const today = new Date(Date.now());
+
+const datetime = today.toISOString();
+
+const dateonly = datetime.split('T')[0]
+
+//switch enviro dev or prod
 const baseURL = window.location.hostname === "localhost"
   ? "http://localhost:8080/data-api"
   : "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api";
@@ -150,7 +158,7 @@ export default {
       try {
         const bandsResponse = await FetchData("Bands");
         const venuesResponse = await axios.get(`${baseURL}/rest/Venues`);
-        const eventsResponse = await axios.get(`${baseURL}/rest/Events?$orderby=DATE%20desc`);
+        const eventsResponse = await axios.get(`${baseURL}/rest/Events?$orderby=DATE%20%20asc&$filter=DATE%20gt%20`+ dateonly + `T00%3A00%3A00Z`);
 
         this.bands = bandsResponse.map((band) => ({
           id: band.ID,
