@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import "./Venues.css";
 import GoogleMap from "../components/GoogleMap.vue";
 
