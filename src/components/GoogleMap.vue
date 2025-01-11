@@ -98,8 +98,8 @@ export default {
       this.city = this.split_formatted_address[1];
       this.state = this.split_formatted_address[2].split(" ")[0];
       this.zipcode = this.split_formatted_address[2].split(" ")[1];
-      this.country = this.split_formatted_address[3];
-    },
+      this.country = this.split_formatted_address[3];},
+
     addMarker() {
       if (this.currentPlace) {
         const marker = {
@@ -157,14 +157,13 @@ export default {
     },
 
     resetVenueForm() {
-      this.newVenue = {
-        NAME: "",
-        STREET: "",
-        CITY: "",
-        STATE: "",
-        ZIP: null,
-        COUNTRY: ""
-      };
+      this.currentPlace = null;
+      this.name = null;
+      this.street = null;
+      this.city = null;
+      this.state = null;
+      this.zipcode = null;
+      this.country = null;
     },
 
     async deleteVenue(venueId, index) {
