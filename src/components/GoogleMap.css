@@ -1,14 +1,14 @@
-.map-search-container {
-    color: antiquewhite;
-  }
-
 .map-search-box {
     width: 500px;
 }
 
-.address {
-    color: white;
-    text-align: center;
-    float: inline-start;
-    color: white;
+.GmapMap {
+    width: 300px; 
+    height: 300px; 
+    float:right;
+}
+
+.venue-inputs 
+{
+    width: 300px;
 }

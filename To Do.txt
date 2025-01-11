@@ -1,2 +1,1 @@
-1. Bind GmapAutocomplete results to New Venue form
 2. Hide Google Maps API Key and restrict in console

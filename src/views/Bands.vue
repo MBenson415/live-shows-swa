@@ -5,7 +5,7 @@
 
       <!-- Add Band Form -->
       <form @submit.prevent="handleBandSubmit" class="bands-form">
-        <h2>Add a new band</h2>
+        <h2>Add Band</h2>
         <div class="bands-form-group">
           <label for="band-name">Band Name: </label>
           <input v-model="newBand.NAME" id="band-name" type="text" required />
