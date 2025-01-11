@@ -9,7 +9,7 @@
         <h2>Add Event</h2>
         <div class="events-form-group">
           <label for="event-name">Event Name: </label>
-          <input v-model="newEvent.name" id="name" type="text"/>
+          <input v-model="newEvent.name" id="name" type="text" class="events-input"/>
         </div>
         <div class="events-form-group">
           <label for="band">Band: </label>
@@ -25,7 +25,7 @@
         </div>
         <div class="events-form-group">
           <label for="venue">Venue: </label>
-          <select v-model="newEvent.venueId" id="venue" required>
+          <select v-model="newEvent.venueId" id="venue" required class="events-input">
             <option v-for="venue in venues" :key="venue.id" :value="venue.id">
               {{ venue.name }}
             </option>
@@ -33,15 +33,15 @@
         </div>
         <div class="events-form-group">
           <label for="facebook-link">Facebook Link: </label>
-          <input v-model="newEvent.facebook_link" id="facebook_link" type="text" />
+          <input v-model="newEvent.facebook_link" id="facebook_link" type="text"  class="events-input"/>
         </div>
         <div class="events-form-group">
           <label for="ticket-link">Ticket Link: </label>
-          <input v-model="newEvent.ticket_link" id="ticket_link" type="text" />
+          <input v-model="newEvent.ticket_link" id="ticket_link" type="text"  class="events-input"/>
         </div>
         <div class="events-form-group">
           <label for="promo">Flyer Link: </label>
-          <input v-model="newEvent.promo" id="promo" type="text" />
+          <input v-model="newEvent.promo" id="promo" type="text"  class="events-input"/>
         </div>
         <button class="events-button" type="submit">Add Event</button>
         <button class="azure-storage-button" onclick=" window.open('https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2F4c6dabdd-a6e5-4e06-be96-74b110203a4a%2FresourceGroups%2Fretrieveshowsapi%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fsquarespacemusic/path/%24web/etag/%220x8DD254A2FE12B12%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/Blob`','_blank')" >Open Azure Storage</button>
@@ -53,7 +53,7 @@
         <h2>Edit Event</h2>
         <div class="events-form-group">
           <label for="edit-event-name">Event Name: </label>
-          <input v-model="newEvent.name" id="edit-name" type="text"  />
+          <input v-model="newEvent.name" id="edit-name" type="text"   class="events-input"/>
         </div>
         <div class="events-form-group">
           <label for="edit-band">Band: </label>
@@ -77,17 +77,18 @@
         </div>
         <div class="events-form-group">
           <label for="edit-facebook-link">Facebook Link: </label>
-          <input v-model="newEvent.facebook_link" id="edit-facebook_link" type="text"  />
+          <input v-model="newEvent.facebook_link" id="edit-facebook_link" type="text"   class="events-input"/>
         </div>
         <div class="events-form-group">
           <label for="edit-ticket-link">Ticket Link: </label>
-          <input v-model="newEvent.ticket_link" id="edit-ticket_link" type="text"  />
+          <input v-model="newEvent.ticket_link" id="edit-ticket_link" type="text"   class="events-input"/>
         </div>
         <div class="events-form-group">
           <label for="edit-promo">Flyer Link: </label>
-          <input v-model="newEvent.promo" id="edit-promo" type="text"  />
+          <input v-model="newEvent.promo" id="edit-promo" type="text"   class="events-input"/>
         </div>
         <button class="events-button" type="submit">Save Changes</button>
+        <button class="azure-storage-button" onclick=" window.open('https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2F4c6dabdd-a6e5-4e06-be96-74b110203a4a%2FresourceGroups%2Fretrieveshowsapi%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fsquarespacemusic/path/%24web/etag/%220x8DD254A2FE12B12%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/Blob`','_blank')" >Open Azure Storage</button>
         <button class="events-cancel-button" @click="cancelEdit">Cancel</button>
       </form>
 
@@ -116,7 +117,7 @@ import FetchData from "../functions/FetchData";
 import "./Events.css";
 
 //construct date for REST API query parameters
-const today = new Date(Date.now());
+const today = new Date(new Date().setDate(new Date().getDate() - 1));
 
 const datetime = today.toISOString();
 
@@ -157,7 +158,7 @@ export default {
     async fetchBandsAndVenues() {
       try {
         const bandsResponse = await FetchData("Bands");
-        const venuesResponse = await axios.get(`${baseURL}/rest/Venues`);
+        const venuesResponse = await axios.get(`${baseURL}/rest/Venues?$orderby=NAME%20%20asc`);
         const eventsResponse = await axios.get(`${baseURL}/rest/Events?$orderby=DATE%20%20asc&$filter=DATE%20gt%20`+ dateonly + `T00%3A00%3A00Z`);
 
         this.bands = bandsResponse.map((band) => ({

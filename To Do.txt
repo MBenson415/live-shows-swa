@@ -1,1 +1,0 @@
-2. Hide Google Maps API Key and restrict in console

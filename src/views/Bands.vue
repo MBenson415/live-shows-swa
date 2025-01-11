@@ -4,19 +4,38 @@
       <h1 class="bands-header">Band Management</h1>
 
       <!-- Add Band Form -->
-      <form @submit.prevent="handleBandSubmit" class="bands-form">
+      <form v-if="!editingBand" @submit.prevent="handleBandSubmit" class="bands-form">
         <h2>Add Band</h2>
         <div class="bands-form-group">
           <label for="band-name">Band Name: </label>
-          <input v-model="newBand.NAME" id="band-name" type="text" required />
+          <input v-model="newBand.NAME" id="band-name" type="text" required class="band-input" />
         </div>
         <div class="bands-form-group">
           <label for="logo-image-link">Logo Image Link: </label>
-          <input v-model="newBand.LOGO_IMAGE_LINK" id="logo-image-link" type="text" required />
+          <input v-model="newBand.LOGO_IMAGE_LINK" id="logo-image-link" type="text" required class="band-input" />
         </div>
         <button class="bands-button" type="submit">Add Band</button>
-        <button class="azure-storage-button" onclick=" window.open('https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2F4c6dabdd-a6e5-4e06-be96-74b110203a4a%2FresourceGroups%2Fretrieveshowsapi%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fsquarespacemusic/path/%24web/etag/%220x8DD254A2FE12B12%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/Blob`','_blank')" >Open Azure Storage</button>
+        <button class="azure-storage-button"
+          onclick=" window.open('https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2F4c6dabdd-a6e5-4e06-be96-74b110203a4a%2FresourceGroups%2Fretrieveshowsapi%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fsquarespacemusic/path/%24web/etag/%220x8DD254A2FE12B12%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/Blob`','_blank')">Open
+          Azure Storage</button>
       </form>
+
+      <!-- Edit Band Form -->
+      <form v-if="editingBand" @submit.prevent="handleEditBandSubmit" class="bands-form">
+        <h2>Edit Band</h2>
+        <div class="bands-form-group">
+          <label for="edit-band-name">Band Name: </label>
+          <input v-model="editingBand.name" id="edit-band-name" type="text" required class="band-input" />
+        </div>
+        <div class="bands-form-group">
+          <label for="edit-logo-image-link">Logo Image Link: </label>
+          <input v-model="editingBand.logo_image_link" id="edit-logo-image-link" type="text" required
+            class="band-input" />
+        </div>
+        <button class="bands-button" type="submit">Save Changes</button>
+        <button class="bands-cancel-button" @click="cancelEdit">Cancel</button>
+      </form>
+
 
       <!-- Display and Manage Bands -->
       <h2>All Bands</h2>
@@ -30,30 +49,7 @@
         </li>
       </ul>
 
-      <!-- Edit Band Form -->
-      <form v-if="editingBand" @submit.prevent="handleEditBandSubmit" class="bands-form">
-        <h2>Edit Band</h2>
-        <div class="bands-form-group">
-          <label for="edit-band-name">Band Name: </label>
-          <input
-            v-model="editingBand.NAME"
-            id="edit-band-name"
-            type="text"
-            required
-          />
-        </div>
-        <div class="bands-form-group">
-          <label for="edit-logo-image-link">Logo Image Link: </label>
-          <input
-            v-model="editingBand.LOGO_IMAGE_LINK"
-            id="edit-logo-image-link"
-            type="text"
-            required
-          />
-        </div>
-        <button class="bands-button" type="submit">Save Changes</button>
-        <button class="bands-cancel-button" @click="cancelEdit">Cancel</button>
-      </form>
+
     </div>
   </div>
 </template>
@@ -134,7 +130,7 @@ export default {
       }
     },
     editBand(band) {
-      this.editingBand = { ...band }; // Create a copy of the band for editing
+      this.editingBand = band;
     },
     async handleEditBandSubmit() {
       try {

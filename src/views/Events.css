@@ -103,3 +103,7 @@
 .events-delete-button:hover {
   background-color: #c82333;
 }
+
+.events-input {
+  width: 600px;
+}

@@ -6,13 +6,13 @@
       <div class="map-search-container">
         <GmapAutocomplete class="map-search-box" @place_changed='setPlace' />
         <button @click='addMarker'>
-          Add
+          View
         </button>
+        <GmapMap :center='center' :zoom='12' class="GmapMap">
+          <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" @click="center = m.position" />
+        </GmapMap>
       </div>
       <br>
-      <GmapMap :center='center' :zoom='12' class="GmapMap">
-        <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" @click="center = m.position" />
-      </GmapMap>
       <div class="venues-form-group" @submit.prevent="handleVenueSubmit">
         <label for="venue-name">Venue Name: </label>
         <input v-model="name" id="venue-name" type="text" required class="venue-inputs" />

@@ -3,9 +3,10 @@
 }
 
 .GmapMap {
-    width: 300px; 
-    height: 300px; 
+    width: 900px; 
+    height: 275px; 
     float:right;
+    flex-basis: auto;
 }
 
 .venue-inputs 
