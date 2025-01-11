@@ -33,6 +33,9 @@
             class="band-input" />
         </div>
         <button class="bands-button" type="submit">Save Changes</button>
+        <button class="azure-storage-button"
+          onclick=" window.open('https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2F4c6dabdd-a6e5-4e06-be96-74b110203a4a%2FresourceGroups%2Fretrieveshowsapi%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fsquarespacemusic/path/%24web/etag/%220x8DD254A2FE12B12%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/Blob`','_blank')">Open
+          Azure Storage</button>
         <button class="bands-cancel-button" @click="cancelEdit">Cancel</button>
       </form>
 
