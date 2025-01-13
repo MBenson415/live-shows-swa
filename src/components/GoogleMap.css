@@ -13,3 +13,18 @@
 {
     width: 300px;
 }
+
+.state-box {
+    float: right;
+    font-size: 2em;
+    background-color:  #9FE7B7;
+    border-style: solid;
+    border-color: grey;
+    border-width: 4px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 140px;       /* The same as your div height */
+    color: black;
+    width: 140px;
+    height: 140px;
+}

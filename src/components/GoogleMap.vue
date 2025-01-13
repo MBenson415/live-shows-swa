@@ -43,6 +43,7 @@
     <h2>All Venues</h2>
     <ul class="venues-list">
         <li v-for="(venue, index) in venues" :key="venue.id" class="venues-item">
+          <div class="state-box">{{ venue.STATE }} </div>
           <p><strong>{{ venue.NAME }}</strong><a :href="`${ venue.GOOGLE_MAPS_LINK }`" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" class="google-maps-icon"></a></p>
           <P>
           {{ venue.STREET }} <br>
