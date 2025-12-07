@@ -4,7 +4,7 @@
  */
 
 const getDataApiUrl = () => {
-  const hostname = window.location.hostname;
+  const hostname = window.location.hostname
   const port = window.location.port;
 
   // Production environment (Azure Static Web Apps)
