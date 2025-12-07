@@ -2,7 +2,7 @@
   "$schema": "https://github.com/Azure/data-api-builder/releases/download/v1.2.10/dab.draft.schema.json",
   "data-source": {
     "database-type": "mssql",
-    "connection-string": "Server=tcp:marshallbensonmusic.database.windows.net,1433;Initial Catalog=live-shows;Persist Security Info=False;User ID=CloudUser;Password=mainMan234!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+    "connection-string": "@env('SWADB_CONNECTION_STRING')",
     "options": {
       "set-session-context": false
     }
