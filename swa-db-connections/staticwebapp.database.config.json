@@ -34,10 +34,8 @@
       "source": "dbo.BANDS",
       "permissions": [
         {
-          "actions": [
-            "*"
-          ],
-          "role": "anonymous"
+          "role": "anonymous",
+          "actions": ["create", "read", "update", "delete"]
         }
       ]
     },
@@ -45,10 +43,8 @@
       "source": "dbo.VENUE",
       "permissions": [
         {
-          "actions": [
-            "*"
-          ],
-          "role": "anonymous"
+          "role": "anonymous",
+          "actions": ["create", "read", "update", "delete"]
         }
       ]
     },
@@ -56,10 +52,8 @@
       "source": "dbo.EVENTS",
       "permissions": [
         {
-          "actions": [
-            "*"
-          ],
-          "role": "anonymous"
+          "role": "anonymous",
+          "actions": ["create", "read", "update", "delete"]
         }
       ]
     }
