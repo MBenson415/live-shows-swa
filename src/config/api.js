@@ -9,7 +9,7 @@ const getDataApiUrl = () => {
 
   // Production environment (Azure Static Web Apps)
   if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
-    return 'https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api';
+    return '/data-api';
   }
 
   // Local development with SWA CLI (runs on port 4280)
