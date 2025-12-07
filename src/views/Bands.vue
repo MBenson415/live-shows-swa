@@ -61,11 +61,7 @@
 import axios from "axios";
 import "./Bands.css";
 import FetchData from "../functions/FetchData";
-
-const baseURL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:8080/data-api"
-    : "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api";
+import { API_BASE_URL } from "../config/api";
 
 export default {
   components: {
@@ -104,7 +100,7 @@ export default {
     },
     async handleBandSubmit() {
       try {
-        await axios.post(`${baseURL}/rest/Bands`, this.newBand);
+        await axios.post(`${API_BASE_URL}/rest/Bands`, this.newBand);
         this.fetchBands();
         this.resetBandForm();
         console.log("Band added successfully!");
@@ -119,7 +115,7 @@ export default {
         if (!confirmed) return;
 
         // Update URL to include filtering
-        const deleteUrl = `${baseURL}/rest/Bands/ID/${bandId}`;
+        const deleteUrl = `${API_BASE_URL}/rest/Bands/ID/${bandId}`;
 
         // Perform the DELETE request
         const response = await axios.delete(deleteUrl);
@@ -137,7 +133,7 @@ export default {
     },
     async handleEditBandSubmit() {
       try {
-        await axios.patch(`${baseURL}/rest/Bands/ID/${this.editingBand.id}`, {
+        await axios.patch(`${API_BASE_URL}/rest/Bands/ID/${this.editingBand.id}`, {
           NAME: this.editingBand.NAME,
           LOGO_IMAGE_LINK: this.editingBand.LOGO_IMAGE_LINK,
         });

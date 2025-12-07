@@ -60,10 +60,7 @@
 import axios from "axios";
 import "./GoogleMap.css";
 import FetchDataWithParams from "../functions/FetchDataWithParams";
-
-const baseURL = window.location.hostname === "localhost"
-  ? "http://localhost:8080/data-api"
-  : "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api";
+import { API_BASE_URL } from "../config/api";
 
 
 export default {
@@ -124,7 +121,7 @@ export default {
 
     async handleVenueSubmit() {
       try {
-        await axios.post(`${baseURL}/rest/Venues`, {
+        await axios.post(`${API_BASE_URL}/rest/Venues`, {
         NAME: this.name,
         STREET: this.street,
         CITY: this.city,
@@ -169,7 +166,7 @@ export default {
 
     async deleteVenue(venueId, index) {
       try {
-        await axios.delete(`${baseURL}/rest/Venues/ID/${venueId}`);
+        await axios.delete(`${API_BASE_URL}/rest/Venues/ID/${venueId}`);
         console.log("Venue deleted", index)
         this.fetchVenues();
       } catch (error) {

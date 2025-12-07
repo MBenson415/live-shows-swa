@@ -123,10 +123,9 @@ const datetime = today.toISOString();
 
 const dateonly = datetime.split('T')[0]
 
+import { API_BASE_URL } from "../config/api";
+
 //switch enviro dev or prod
-const baseURL = window.location.hostname === "localhost"
-  ? "http://localhost:8080/data-api"
-  : "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api";
 
 export default {
   name: "Events",
@@ -158,8 +157,8 @@ export default {
     async fetchBandsAndVenues() {
       try {
         const bandsResponse = await FetchData("Bands");
-        const venuesResponse = await axios.get(`${baseURL}/rest/Venues?$orderby=NAME%20%20asc`);
-        const eventsResponse = await axios.get(`${baseURL}/rest/Events?$orderby=DATE%20%20asc&$filter=DATE%20gt%20`+ dateonly + `T00%3A00%3A00Z`);
+        const venuesResponse = await axios.get(`${API_BASE_URL}/rest/Venues?$orderby=NAME%20%20asc`);
+        const eventsResponse = await axios.get(`${API_BASE_URL}/rest/Events?$orderby=DATE%20%20asc&$filter=DATE%20gt%20`+ dateonly + `T00%3A00%3A00Z`);
 
         this.bands = bandsResponse.map((band) => ({
           id: band.ID,
@@ -203,7 +202,7 @@ export default {
           PROMO: this.newEvent.promo,
         };
 
-        const response = await axios.post(`${baseURL}/rest/Events`, requestData);
+        const response = await axios.post(`${API_BASE_URL}/rest/Events`, requestData);
         this.events.push({
           id: response.data.id,
           name: response.data.name,
@@ -233,7 +232,7 @@ export default {
     },
     async deleteEvent(eventId) {
       try {
-        const deleteUrl = `${baseURL}/rest/Events/ID/${eventId}`;
+        const deleteUrl = `${API_BASE_URL}/rest/Events/ID/${eventId}`;
         await axios.delete(deleteUrl);
         this.events = this.events.filter(event => event.id !== eventId);
       } catch (error) {
@@ -263,7 +262,7 @@ export default {
           PROMO: this.newEvent.promo,
         };
 
-        const editUrl = `${baseURL}/rest/Events/ID/${this.editingEvent.id}`;
+        const editUrl = `${API_BASE_URL}/rest/Events/ID/${this.editingEvent.id}`;
         await axios.patch(editUrl, requestData);
 
         // Update the event in the local array

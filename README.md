@@ -53,36 +53,39 @@ brew install az
 
 # Dev environment
 
+## Using Azure Static Web Apps CLI (Recommended for testing data API locally)
+
+The SWA CLI provides a complete local development environment including the Vue app and the data API backend.
+
 See https://learn.microsoft.com/en-us/azure/static-web-apps/local-development#how-it-works
 
-Log in to Azure CLI with az login
+### Setup
 
 ```bash
 az login
-```
-
-Log in to swa CLI with swa login
-
-```bash
 swa login
 ```
 
-Type swa start to spin up local development server. 
+### Run with SWA CLI
 
 ```bash
 swa start
 ```
 
-Visit http://localhost:4280/data-api/rest/Bands to see API response
+The application will be available at:
+- **App**: http://localhost:4280/ 
+- **Data API**: http://localhost:4280/data-api/rest/Bands
 
+## Using npm run serve (Development only, no data API)
+
+To run just the Vue development server without the data API backend:
 
 ```bash
 npm run serve
 ```
-Development server will start, App running at:
-  - Local:   http://localhost:8080/
-  - Network: http://192.168.1.73:8080/
 
-Visit http://localhost:8080/data-api/rest/Bands to see API response
+Development server will start at:
+  - Local:   http://localhost:8081/
+  - Network: http://192.168.1.73:8081/
 
-Make sure baseURL is set correctly before running the server. This can be changed within FetchData.js. Soon, this will change automatically based on environment (development server vs production)
+**Note**: When using `npm run serve` alone, you cannot test data API calls. Use `swa start` instead to test the full application with the data API.

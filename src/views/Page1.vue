@@ -103,11 +103,7 @@ import Sidebar from "@/components/Sidebar.vue";
 import "./Page1.css";
 
 import FetchData from "../functions/FetchData";
-
-// Conditionally set the baseURL for the database
-const baseURL = window.location.hostname === "localhost"
-  ? "http://localhost:8080/data-api"
-  : "https://lemon-bay-04d0e1a0f.5.azurestaticapps.net/data-api";
+import { API_BASE_URL } from "../config/api";
 
 export default {
   components: {
@@ -141,7 +137,7 @@ export default {
     async fetchBandsAndEvents() {
       try {
         const bandsResponse = await FetchData('Bands');
-        const eventsResponse = await axios.get(`${baseURL}/rest/Events`);
+        const eventsResponse = await axios.get(`${API_BASE_URL}/rest/Events`);
 
         const bands = bandsResponse.map((band) => ({
           id: band.ID,
@@ -175,7 +171,7 @@ export default {
     async handleBandSubmit() {
       try {
         console.log("Submitting band:", this.newBand);
-        await axios.post(`${baseURL}/rest/Bands`, this.newBand);
+        await axios.post(`${API_BASE_URL}/rest/Bands`, this.newBand);
         this.fetchBandsAndEvents();
         this.resetBandForm();
         console.log("Success!");
@@ -186,7 +182,7 @@ export default {
     async handleVenueSubmit() {
       try {
         console.log("Submitting venue:", this.newVenue); // Debugging log
-        await axios.post(`${baseURL}/rest/Venues`, this.newVenue);
+        await axios.post(`${API_BASE_URL}/rest/Venues`, this.newVenue);
         this.resetVenueForm();
         console.log("Success!");
       } catch (error) {
@@ -195,7 +191,7 @@ export default {
     },
     async handleEventSubmit() {
       try {
-        const response = await axios.post(`${baseURL}/Events`, this.newEvent);
+        const response = await axios.post(`${API_BASE_URL}/Events`, this.newEvent);
         const band = this.bands.find((b) => b.id === this.newEvent.bandId);
         band.events.push(response.data);
         this.resetEventForm();
@@ -210,7 +206,7 @@ export default {
     },
     async deleteEvent(eventId) {
       try {
-        await axios.delete(`${baseURL}/Events/${eventId}`);
+        await axios.delete(`${API_BASE_URL}/Events/${eventId}`);
         this.bands.forEach((band) => {
           band.events = band.events.filter((event) => event.id !== eventId);
         });
