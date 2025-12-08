@@ -1,11 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Page1 from "@/views/Page1.vue";
-import Page2 from "@/views/Page2.vue";
-import Page3 from "@/views/Page3.vue";
-import Bands from "@/views/Bands.vue";
-import Venues from "@/views/Venues.vue";
-import Events from "@/views/Events.vue";
+const Page1 = () => import(/* webpackChunkName: "page1" */ "@/views/Page1.vue");
+const Page2 = () => import(/* webpackChunkName: "page2" */ "@/views/Page2.vue");
+const Page3 = () => import(/* webpackChunkName: "page3" */ "@/views/Page3.vue");
+const Bands = () => import(/* webpackChunkName: "bands" */ "@/views/Bands.vue");
+const Venues = () => import(/* webpackChunkName: "venues" */ "@/views/Venues.vue");
+const Events = () => import(/* webpackChunkName: "events" */ "@/views/Events.vue");
 
 
 // Install Vue Router
